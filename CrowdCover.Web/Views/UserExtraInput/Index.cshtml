@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CrowdCover.Web.Models.UserExtra>
+
+@{
+    ViewData["Title"] = "UserExtra List";
+}
+
+<h1>UserExtra List</h1>
+
+<table id="extraTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email (Read-Only)</th>
+            <th>User ID (Read-Only)</th>
+            <th>Sharpsport Bettor ID</th> <!-- New column for SharpsportBettorId -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Username</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.User.Email</td> <!-- Displaying the IdentityUser Email -->
+                <td>@item.User.Id</td> <!-- Displaying the IdentityUser ID -->
+                <td>
+                    @if (!string.IsNullOrEmpty(item.SharpsportBettorId))
+                    {
+                        <span>@item.SharpsportBettorId</span> <!-- Display the SharpsportBettorId -->
+                    }
+                    else
+                    {
+                        <span class="text-muted">Not linked</span> <!-- Display message if no bettor is linked -->
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.SharpsportBettorId))
+                    {
+                        <a asp-action="ViewBetHistory" asp-route-id="@item.SharpsportBettorId" class="btn btn-info">View Bet History</a>
+                        <form asp-action="UnlinkBettor" asp-route-id="@item.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-warning">Unlink Bettor</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-action="LinkBettor" asp-route-id="@item.Id" class="btn btn-secondary">Link Bettor</a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-success">Create New UserExtra</a>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#extraTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true
+            });
+        });
+    </script>
+}

@@ -1,0 +1,48 @@
+﻿@model CrowdCover.Web.Models.UserExtra
+
+@{
+    ViewData["Title"] = "Edit UserExtra";
+}
+
+<h1>Edit UserExtra</h1>
+
+<h4>UserExtra</h4>
+<hr />
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="Username" class="control-label"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <!-- Display IdentityUser properties as read-only -->
+    <div class="form-group">
+        <label>Email (Read-Only)</label>
+        <input class="form-control" value="@Model.User.Email" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>User ID (Read-Only)</label>
+        <input class="form-control" value="@Model.User.Id" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="~/UserExtraInput/Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

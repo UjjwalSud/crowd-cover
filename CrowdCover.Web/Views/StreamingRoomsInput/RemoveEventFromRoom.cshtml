@@ -1,0 +1,51 @@
+﻿@model CrowdCover.Web.Models.StreamingRoom
+
+@{
+    ViewData["Title"] = "Remove Event from Streaming Room";
+}
+
+<h2>Remove Event from Streaming Room: @Model.Name</h2>
+
+@if (Model.StreamingRoomEvents != null && Model.StreamingRoomEvents.Any())
+{
+    <ul class="list-group">
+        @foreach (var linkedEvent in Model.StreamingRoomEvents)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @linkedEvent.Event.Name (@linkedEvent.Event.StartTime)
+                <form asp-action="RemoveEventFromRoom" method="post" class="d-inline">
+                    <input type="hidden" name="streamingRoomId" value="@Model.Id" />
+                    <input type="hidden" name="eventId" value="@linkedEvent.EventId" />
+                    <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                </form>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No events are linked to this room.</p>
+}
+
+<a href="~/StreamingRoomsInput/Index" class="btn btn-secondary mt-3">Back to Streaming Rooms</a>
+
+<!-- Custom styles for the list -->
+<style>
+    .list-group-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .list-group {
+        max-width: 600px;
+    }
+
+    .btn {
+        max-width: 150px;
+    }
+
+    .mt-3 {
+        margin-top: 1rem;
+    }
+</style>

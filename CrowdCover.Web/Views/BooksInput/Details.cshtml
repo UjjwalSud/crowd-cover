@@ -1,0 +1,69 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<h2>Book Details</h2>
+
+<div class="mb-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Abbr</th>
+        <td>@Model.Abbr</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>@Model.Status</td>
+    </tr>
+    <tr>
+        <th>Refresh Cadence Active</th>
+        <td>@Model.RefreshCadenceActive</td>
+    </tr>
+    <tr>
+        <th>SDK Required</th>
+        <td>@Model.SdkRequired</td>
+    </tr>
+    <tr>
+        <th>Pull Back To Date</th>
+        <td>@Model.PullBackToDate?.ToString("yyyy-MM-dd")</td>
+    </tr>
+    <tr>
+        <th>Max History Months</th>
+        <td>@Model.MaxHistoryMonths</td>
+    </tr>
+    <tr>
+        <th>Max History Bets</th>
+        <td>@Model.MaxHistoryBets</td>
+    </tr>
+    <tr>
+        <th>History Detail</th>
+        <td>@Model.HistoryDetail</td>
+    </tr>
+    <tr>
+        <th>Mobile Only</th>
+        <td>@Model.MobileOnly</td>
+    </tr>
+    <tr>
+        <th>Bet Place Status</th>
+        <td>@Model.BetPlaceStatus</td>
+    </tr>
+</table>
+
+<div class="mb-3">
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-inline">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>

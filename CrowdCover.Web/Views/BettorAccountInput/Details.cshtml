@@ -1,0 +1,153 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.BettorAccount
+
+@{
+    ViewData["Title"] = "Bettor Account Details";
+}
+
+<h2>Bettor Account Details</h2>
+
+<div>
+    <h4>Bettor Account</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bettor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bettor)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BookRegion.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BookRegion.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Verified)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Verified)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Access)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Access)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Paused)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Paused)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BetRefreshRequested)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BetRefreshRequested)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeCreated)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeCreated)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MissingBets)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MissingBets)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsUnverifiable)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsUnverifiable)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RefreshInProgress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RefreshInProgress)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TFA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TFA)
+        </dd>
+
+        @* Display Metadata properties, if present *@
+        @if (Model.Metadata != null)
+        {
+            <dt class="col-sm-2">
+                Metadata: Handle
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.Handle)
+            </dd>
+
+            <dt class="col-sm-2">
+                Metadata: UnitSize
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.UnitSize)
+            </dd>
+
+            <dt class="col-sm-2">
+                Metadata: NetProfit
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.NetProfit)
+            </dd>
+
+            <dt class="col-sm-2">
+                Metadata: WinPercentage
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.WinPercentage)
+            </dd>
+
+            <dt class="col-sm-2">
+                Metadata: WalletShare
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.WalletShare)
+            </dd>
+        }
+    </dl>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a href="~/BettorAccountInput/Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,107 @@
+﻿@model CrowdCover.Web.Models.StreamingRoom
+
+@{
+    ViewData["Title"] = "Add Book to Streaming Room";
+}
+
+<h2>Add Book to Streaming Room</h2>
+
+<form asp-action="AddBookToRoom" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" disabled style="max-width: 400px;" />
+    </div>
+
+    <div class="form-group" style="position: relative;">
+        <label for="BookId">Select Book</label>
+        <input type="text" id="bookSearch" placeholder="Search for books..." class="form-control" onkeyup="filterBooks()" autocomplete="off" style="max-width: 400px;">
+
+        <div id="bookDropdown" class="dropdown-menu show" style="max-height: 200px; overflow-y: auto; max-width: 400px; position: absolute; top: 100%; left: 0; z-index: 1050;">
+            <button class="dropdown-item disabled" type="button">--Select a Book--</button>
+            @foreach (var book in ViewBag.Books)
+            {
+                <button class="dropdown-item" type="button" onclick="selectBook('@book.Id', '@book.Name')">@book.Name (@book.Abbr)</button>
+            }
+        </div>
+    </div>
+
+    <input type="hidden" id="selectedBookId" name="bookId" />
+
+    <!-- Ensure the button is aligned and visible -->
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Add Book</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        function filterBooks() {
+            var input, filter, div, buttons, i;
+            input = document.getElementById('bookSearch');
+            filter = input.value.toUpperCase();
+            div = document.getElementById('bookDropdown');
+            buttons = div.getElementsByTagName('button');
+
+            for (i = 1; i < buttons.length; i++) { // Start from 1 to skip the "--Select a Book--" button
+                var txtValue = buttons[i].textContent || buttons[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    buttons[i].style.display = "";
+                } else {
+                    buttons[i].style.display = "none";
+                }
+            }
+        }
+
+        function selectBook(id, name) {
+            document.getElementById('bookSearch').value = name; // Set the selected book name in the input
+            document.getElementById('selectedBookId').value = id; // Set the selected book ID in the hidden input
+        }
+    </script>
+}
+
+<!-- Custom styles to ensure proper layout -->
+<style>
+    /* Ensure the dropdown has a white background and proper borders */
+    #bookDropdown {
+        background-color: white;
+        border: 1px solid #ced4da;
+        max-width: 400px; /* Ensure the dropdown doesn't extend too far */
+        position: absolute; /* Make the dropdown float above other elements */
+        top: 100%; /* Position the dropdown below the input field */
+        left: 0; /* Align the dropdown with the input field */
+        z-index: 1050; /* Make sure the dropdown appears above other elements */
+    }
+
+    /* Style the dropdown items */
+    .dropdown-item {
+        color: black;
+        cursor: pointer;
+    }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+    /* Add some spacing for better look */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    /* Ensure that the dropdown and input don't go off-screen */
+    .form-control {
+        max-width: 400px;
+    }
+
+    /* Ensure button stays visible */
+    .btn {
+        width: 100%; /* Ensure button is full-width */
+        max-width: 400px; /* Ensure the button doesn't exceed max width */
+    }
+
+    /* Add margin to the "Add Book" button */
+    .mt-3 {
+        margin-top: 1rem;
+    }
+</style>

@@ -1,0 +1,16 @@
+﻿@model CrowdCover.Web.Models.ViewModels.RemoveBookViewModel
+
+@{
+    ViewData["Title"] = "Remove Book";
+}
+
+<h2>Remove Book from Streaming Room</h2>
+
+<p>Are you sure you want to remove the book "@Model.BookName" from this streaming room?</p>
+
+<form asp-action="RemoveBookFromRoom" method="post">
+    <input type="hidden" asp-for="StreamingRoomId" />
+    <input type="hidden" asp-for="BookId" />
+    <button type="submit" class="btn btn-danger">Remove</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

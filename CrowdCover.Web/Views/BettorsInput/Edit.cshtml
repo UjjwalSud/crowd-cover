@@ -1,0 +1,95 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.Bettor
+
+@{
+    ViewData["Title"] = "Edit Bettor";
+}
+
+<h2>Edit Bettor</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Bettor</h4>
+        <hr />
+
+        @* Id (Read-only) *@
+        <div class="form-group">
+            <label asp-for="Id" class="control-label"></label>
+            <input asp-for="Id" class="form-control" readonly />
+        </div>
+
+        @* InternalId *@
+        <div class="form-group">
+            <label asp-for="InternalId" class="control-label"></label>
+            <input asp-for="InternalId" class="form-control" />
+            <span asp-validation-for="InternalId" class="text-danger"></span>
+        </div>
+
+        @* Bet Refresh Requested *@
+        <div class="form-group">
+            <label asp-for="BetRefreshRequested" class="control-label"></label>
+            <input asp-for="BetRefreshRequested" class="form-control" />
+            <span asp-validation-for="BetRefreshRequested" class="text-danger"></span>
+        </div>
+
+        @* Time Created *@
+        <div class="form-group">
+            <label asp-for="TimeCreated" class="control-label"></label>
+            <input asp-for="TimeCreated" class="form-control" />
+            <span asp-validation-for="TimeCreated" class="text-danger"></span>
+        </div>
+
+        @* Metadata (optional fields) *@
+        <h4>Metadata</h4>
+        @if (Model.Metadata != null)
+        {
+            <div class="form-group">
+                <label asp-for="Metadata.Handle" class="control-label">Handle</label>
+                <input asp-for="Metadata.Handle" class="form-control" />
+                <span asp-validation-for="Metadata.Handle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Metadata.UnitSize" class="control-label">Unit Size</label>
+                <input asp-for="Metadata.UnitSize" class="form-control" />
+                <span asp-validation-for="Metadata.UnitSize" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Metadata.NetProfit" class="control-label">Net Profit</label>
+                <input asp-for="Metadata.NetProfit" class="form-control" />
+                <span asp-validation-for="Metadata.NetProfit" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Metadata.WinPercentage" class="control-label">Win Percentage</label>
+                <input asp-for="Metadata.WinPercentage" class="form-control" />
+                <span asp-validation-for="Metadata.WinPercentage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Metadata.TotalAccounts" class="control-label">Total Accounts</label>
+                <input asp-for="Metadata.TotalAccounts" class="form-control" />
+                <span asp-validation-for="Metadata.TotalAccounts" class="text-danger"></span>
+            </div>
+        }
+
+        @* UserId (linking to Identity User) *@
+        <div class="form-group">
+            <label asp-for="UserId" class="control-label"></label>
+            <input asp-for="UserId" class="form-control" />
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <a href="~/BettorsInput/Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

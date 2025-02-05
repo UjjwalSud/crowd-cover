@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CrowdCover.Web</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: black;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #ffc107 !important;
+        }
+
+        .dropdown-menu {
+            background-color: black;
+        }
+
+        .dropdown-item {
+            color: #fff;
+        }
+
+        .dropdown-item:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #adb5bd;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: #adb5bd;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        .main-container {
+            margin-top: 30px;
+            padding: 15px;
+        }
+
+        /* Ensure hero image scales correctly */
+        .hero-image {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+        }
+
+        @@media (max-width: 576px) {
+            /* Adjustments for small screens */
+            .navbar-nav .nav-item {
+                margin-bottom: 10px;
+            }
+
+            .footer {
+                text-align: center;
+            }
+
+            /* Ensure hero image doesn't take too much vertical space on mobile */
+            .hero-image {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/Home/Index">CrowdCover</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Home/Index">Home</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <!-- User Management Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    User Management
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="~/AccountInput/Index">Users</a></li>
+                                    <li><a class="dropdown-item" href="~/UserExtraInput/Index">User Extra (Usernames)</a></li>
+                                    <li><a class="dropdown-item" href="~/BettorAccountInput/Index">Bettor Accounts</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Book Management Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="betDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Book Management
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="betDropdown">
+                                    <li><a class="dropdown-item" href="~/BooksInput/Index">Books</a></li>
+
+                                </ul>
+                            </li>
+
+                            <!-- Bet Management Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="betDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Bet Management
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="betDropdown">
+                                    <li><a class="dropdown-item" href="~/BetSlipsInput/Index">Bet Slips</a></li>
+                                    <li><a class="dropdown-item" href="~/BetsInput/Index">Bets</a></li>
+                                    <li><a class="dropdown-item" href="~/BettorsInput/Index">Bettors</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Events & Streaming Rooms Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="eventsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Events & Streaming Rooms
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="eventsDropdown">
+                                    <li><a class="dropdown-item" href="~/EventsInput/Index">Events</a></li>
+                                    <li><a class="dropdown-item" href="~/StreamingRoomsInput/Index">Streaming Rooms</a></li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <partial name="_LoginPartial" />
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+  
+
+    <!-- Main content container -->
+    <div class="container main-container">
+        <main role="main" class="pb-3">
+            @RenderBody()  <!-- This is where the page-specific content gets injected -->
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div>&copy; 2024 - CrowdCover.Web - <a href="/Home/Privacy">Privacy Policy</a></div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+@RenderSection("Scripts", required: false)
+</html>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CrowdCover.Web.Models.Sharpsports.BetSlip>
+
+@{
+    ViewData["Title"] = "Bet History";
+}
+
+<h1>Bet History</h1>
+
+@if (!Model.Any())
+{
+    <p>No bet history found for this bettor.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Bet Slip ID</th>
+                <th>Time Placed</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Net Profit</th>
+                <th>Bets</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var betSlip in Model)
+            {
+                <tr>
+                    <td>@betSlip.Id</td>
+                    <td>@betSlip.TimePlaced?.ToString("g")</td>
+                    <td>@betSlip.Type</td>
+                    <td>@betSlip.Status</td>
+                    <td>@betSlip.NetProfit?.ToString("C")</td>
+                    <td>
+                        <ul>
+                            @foreach (var bet in betSlip.Bets)
+                            {
+                                <li>
+                                    <strong>Bet ID:</strong> @bet.Id |
+                                    <strong>Type:</strong> @bet.Type |
+                                    <strong>Status:</strong> @bet.Status |
+                                    <strong>Outcome:</strong> @bet.Outcome
+                                </li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

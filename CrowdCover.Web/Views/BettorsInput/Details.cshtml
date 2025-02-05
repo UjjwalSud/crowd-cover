@@ -1,0 +1,97 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.Bettor
+
+@{
+    ViewData["Title"] = "Bettor Details";
+}
+
+<h2>Bettor Details</h2>
+
+<div>
+    <h4>Bettor</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InternalId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InternalId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BetRefreshRequested)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BetRefreshRequested)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeCreated)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeCreated)
+        </dd>
+
+        <h4>Metadata</h4>
+        @if (Model.Metadata != null)
+        {
+            <dt class="col-sm-2">
+                Handle
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.Handle)
+            </dd>
+
+            <dt class="col-sm-2">
+                Unit Size
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.UnitSize)
+            </dd>
+
+            <dt class="col-sm-2">
+                Net Profit
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.NetProfit)
+            </dd>
+
+            <dt class="col-sm-2">
+                Win Percentage
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.WinPercentage)
+            </dd>
+
+            <dt class="col-sm-2">
+                Total Accounts
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Metadata.TotalAccounts)
+            </dd>
+        }
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+    </dl>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a href="~/BettorsInput/Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

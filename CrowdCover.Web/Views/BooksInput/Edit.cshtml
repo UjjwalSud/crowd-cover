@@ -1,0 +1,78 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.Book
+
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<h2>Edit Book</h2>
+
+<div>
+    <form asp-action="Edit" method="post">
+        <!-- Hidden field for the ID (since it's usually not editable) -->
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Abbr" class="control-label"></label>
+            <input asp-for="Abbr" class="form-control" />
+            <span asp-validation-for="Abbr" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <input asp-for="Status" class="form-control" />
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="RefreshCadenceActive" class="control-label"></label>
+            <input asp-for="RefreshCadenceActive" class="form-control" />
+            <span asp-validation-for="RefreshCadenceActive" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SdkRequired" class="control-label"></label>
+            <input asp-for="SdkRequired" class="form-control" />
+            <span asp-validation-for="SdkRequired" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PullBackToDate" class="control-label"></label>
+            <input asp-for="PullBackToDate" class="form-control" type="date" />
+            <span asp-validation-for="PullBackToDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaxHistoryMonths" class="control-label"></label>
+            <input asp-for="MaxHistoryMonths" class="form-control" type="number" />
+            <span asp-validation-for="MaxHistoryMonths" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaxHistoryBets" class="control-label"></label>
+            <input asp-for="MaxHistoryBets" class="form-control" type="number" />
+            <span asp-validation-for="MaxHistoryBets" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HistoryDetail" class="control-label"></label>
+            <input asp-for="HistoryDetail" class="form-control" />
+            <span asp-validation-for="HistoryDetail" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MobileOnly" class="control-label"></label>
+            <input asp-for="MobileOnly" class="form-control" />
+            <span asp-validation-for="MobileOnly" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BetPlaceStatus" class="control-label"></label>
+            <textarea asp-for="BetPlaceStatus" class="form-control"></textarea>
+            <span asp-validation-for="BetPlaceStatus" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

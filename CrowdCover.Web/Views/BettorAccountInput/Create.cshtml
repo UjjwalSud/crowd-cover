@@ -1,0 +1,110 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.BettorAccount
+
+@{
+    ViewData["Title"] = "Create Bettor Account";
+}
+
+<h2>Create Bettor Account</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Bettor Account</h4>
+        <hr />
+
+        @* Bettor *@
+        <div class="form-group">
+            <label asp-for="Bettor" class="control-label"></label>
+            <input asp-for="Bettor" class="form-control" />
+            <span asp-validation-for="Bettor" class="text-danger"></span>
+        </div>
+
+        @* Book Region (Optional if you're adding dropdowns or selections) *@
+        <div class="form-group">
+            <label asp-for="BookRegion.Name" class="control-label"></label>
+            <input asp-for="BookRegion.Name" class="form-control" />
+            <span asp-validation-for="BookRegion.Name" class="text-danger"></span>
+        </div>
+
+        @* Verified *@
+        <div class="form-group">
+            <label asp-for="Verified" class="control-label"></label>
+            <input asp-for="Verified" class="form-control" />
+            <span asp-validation-for="Verified" class="text-danger"></span>
+        </div>
+
+        @* Access *@
+        <div class="form-group">
+            <label asp-for="Access" class="control-label"></label>
+            <input asp-for="Access" class="form-control" />
+            <span asp-validation-for="Access" class="text-danger"></span>
+        </div>
+
+        @* Paused *@
+        <div class="form-group">
+            <label asp-for="Paused" class="control-label"></label>
+            <input asp-for="Paused" class="form-control" />
+            <span asp-validation-for="Paused" class="text-danger"></span>
+        </div>
+
+        @* BetRefreshRequested *@
+        <div class="form-group">
+            <label asp-for="BetRefreshRequested" class="control-label"></label>
+            <input asp-for="BetRefreshRequested" class="form-control" />
+            <span asp-validation-for="BetRefreshRequested" class="text-danger"></span>
+        </div>
+
+        @* Balance *@
+        <div class="form-group">
+            <label asp-for="Balance" class="control-label"></label>
+            <input asp-for="Balance" class="form-control" />
+            <span asp-validation-for="Balance" class="text-danger"></span>
+        </div>
+
+        @* TimeCreated *@
+        <div class="form-group">
+            <label asp-for="TimeCreated" class="control-label"></label>
+            <input asp-for="TimeCreated" class="form-control" />
+            <span asp-validation-for="TimeCreated" class="text-danger"></span>
+        </div>
+
+        @* MissingBets *@
+        <div class="form-group">
+            <label asp-for="MissingBets" class="control-label"></label>
+            <input asp-for="MissingBets" class="form-control" />
+            <span asp-validation-for="MissingBets" class="text-danger"></span>
+        </div>
+
+        @* IsUnverifiable *@
+        <div class="form-group">
+            <label asp-for="IsUnverifiable" class="control-label"></label>
+            <input asp-for="IsUnverifiable" class="form-control" />
+            <span asp-validation-for="IsUnverifiable" class="text-danger"></span>
+        </div>
+
+        @* RefreshInProgress *@
+        <div class="form-group">
+            <label asp-for="RefreshInProgress" class="control-label"></label>
+            <input asp-for="RefreshInProgress" class="form-control" />
+            <span asp-validation-for="RefreshInProgress" class="text-danger"></span>
+        </div>
+
+        @* TFA *@
+        <div class="form-group">
+            <label asp-for="TFA" class="control-label"></label>
+            <input asp-for="TFA" class="form-control" />
+            <span asp-validation-for="TFA" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <a href ="~/BettorAccountInput/Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

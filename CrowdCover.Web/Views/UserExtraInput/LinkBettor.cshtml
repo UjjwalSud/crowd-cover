@@ -1,0 +1,63 @@
+﻿@model CrowdCover.Web.Models.ViewModels.LinkBettorViewModel
+
+@{
+    ViewData["Title"] = "Link Bettor to UserExtra";
+}
+
+<h2>Link Bettor to UserExtra</h2>
+
+<form asp-action="LinkBettor" method="post">
+    <input type="hidden" asp-for="UserExtra.Id" />
+
+    <div class="form-group">
+        <label asp-for="UserExtra.Username"></label>
+        <input class="form-control" asp-for="UserExtra.Username" disabled style="max-width: 400px;" />
+    </div>
+
+    <div class="form-group">
+        <label for="BettorId">Select Bettor</label>
+        <input type="text" id="bettorSearch" placeholder="Search for bettors..." class="form-control" onkeyup="filterBettors()" autocomplete="off" style="max-width: 400px;">
+
+        <div id="bettorDropdown" class="dropdown-menu show w-100" style="max-height: 200px; overflow-y: auto; max-width: 400px;">
+            <button class="dropdown-item disabled" type="button">--Select a Bettor--</button>
+            @foreach (var bettor in Model.Bettors)
+            {
+                <button class="dropdown-item" type="button" onclick="selectBettor('@bettor.Id', '@bettor.InternalId')">@bettor.InternalId</button>
+            }
+        </div>
+    </div>
+
+    <input type="hidden" id="selectedBettorId" name="selectedBettorId" />
+
+    <div class="form-group mt-4 d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" style="width: 200px;">Link Bettor</button>
+    </div>
+
+
+</form>
+
+@section Scripts {
+    <script>
+        function filterBettors() {
+            var input, filter, div, buttons, i;
+            input = document.getElementById('bettorSearch');
+            filter = input.value.toUpperCase();
+            div = document.getElementById('bettorDropdown');
+            buttons = div.getElementsByTagName('button');
+
+            for (i = 1; i < buttons.length; i++) { // Start from 1 to skip the "--Select a Bettor--" button
+                var txtValue = buttons[i].textContent || buttons[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    buttons[i].style.display = "";
+                } else {
+                    buttons[i].style.display = "none";
+                }
+            }
+        }
+
+        function selectBettor(id, name) {
+            document.getElementById('bettorSearch').value = name; // Set the selected bettor name in the input
+            document.getElementById('selectedBettorId').value = id; // Set the selected bettor ID in the hidden input
+        }
+    </script>
+}

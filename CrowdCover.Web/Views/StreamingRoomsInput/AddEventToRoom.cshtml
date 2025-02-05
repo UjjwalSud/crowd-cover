@@ -1,0 +1,105 @@
+﻿@model CrowdCover.Web.Models.StreamingRoom
+
+@{
+    ViewData["Title"] = "Add Event to Streaming Room";
+}
+
+<h2>Add Event to Streaming Room</h2>
+
+<form asp-action="AddEventToRoom" method="post">
+    <input type="hidden" asp-for="Id" />
+    
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" disabled style="max-width: 400px;" />
+    </div>
+
+    <div class="form-group">
+        <label for="EventId">Select Event</label>
+
+         <!-- Ensure the button is aligned and visible -->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mt-3">Add Event</button>
+    </div>
+        <input type="text" id="eventSearch" placeholder="Search for events..." class="form-control" onkeyup="filterEvents()" autocomplete="off" style="max-width: 400px;">
+
+        <div id="eventDropdown" class="dropdown-menu show w-100" style="max-height: 200px; overflow-y: auto; max-width: 400px;">
+            <button class="dropdown-item disabled" type="button">--Select an Event--</button>
+            @foreach (var evnt in ViewBag.Events)
+            {
+                <button class="dropdown-item" type="button" onclick="selectEvent('@evnt.Id', '@evnt.Name')">@evnt.Name (@evnt.StartTime)</button>
+            }
+        </div>
+    </div>
+
+    <input type="hidden" id="selectedEventId" name="eventId" />
+
+   
+</form>
+
+@section Scripts {
+    <script>
+        function filterEvents() {
+            var input, filter, div, buttons, i;
+            input = document.getElementById('eventSearch');
+            filter = input.value.toUpperCase();
+            div = document.getElementById('eventDropdown');
+            buttons = div.getElementsByTagName('button');
+
+            for (i = 1; i < buttons.length; i++) { // Start from 1 to skip the "--Select an Event--" button
+                var txtValue = buttons[i].textContent || buttons[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    buttons[i].style.display = "";
+                } else {
+                    buttons[i].style.display = "none";
+                }
+            }
+        }
+
+        function selectEvent(id, name) {
+            document.getElementById('eventSearch').value = name; // Set the selected event name in the input
+            document.getElementById('selectedEventId').value = id; // Set the selected event ID in the hidden input
+        }
+    </script>
+}
+
+<!-- Custom styles to ensure proper layout -->
+<style>
+    /* Ensure the dropdown has a white background and proper borders */
+    #eventDropdown {
+        background-color: white;
+        border: 1px solid #ced4da;
+        max-width: 400px; /* Ensure the dropdown doesn't extend too far */
+    }
+
+    /* Style the dropdown items */
+    .dropdown-item {
+        color: black;
+        cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Add some spacing for better look */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    /* Ensure that the dropdown and input don't go off-screen */
+    .form-control {
+        max-width: 400px;
+    }
+
+    /* Ensure button stays visible */
+    .btn {
+        width: 100%; /* Ensure button is full-width */
+        max-width: 400px; /* Ensure the button doesn't exceed max width */
+    }
+
+    /* Add margin to the "Add Event" button */
+    .mt-3 {
+        margin-top: 1rem;
+    }
+</style>

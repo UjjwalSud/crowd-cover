@@ -1,0 +1,139 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.BettorAccount
+
+@{
+    ViewData["Title"] = "Edit Bettor Account";
+}
+
+<h2>Edit Bettor Account</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Bettor Account</h4>
+        <hr />
+
+        @* Id (Readonly field) *@
+        <div class="form-group">
+            <label asp-for="Id" class="control-label"></label>
+            <input asp-for="Id" class="form-control" readonly />
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+
+        @* Bettor (Editable field) *@
+        <div class="form-group">
+            <label asp-for="Bettor" class="control-label"></label>
+            <input asp-for="Bettor" class="form-control" />
+            <span asp-validation-for="Bettor" class="text-danger"></span>
+        </div>
+
+        @* Book (Should be a dropdown if you have Book entities loaded) *@
+        <div class="form-group">
+            <label asp-for="Book" class="control-label"></label>
+            <select asp-for="Book" class="form-control">
+                <!-- Populate this with actual book data from your controller -->
+            </select>
+            <span asp-validation-for="Book" class="text-danger"></span>
+        </div>
+
+        @* BookRegion (Dropdown or input if necessary) *@
+        <div class="form-group">
+            <label asp-for="BookRegion" class="control-label"></label>
+            <select asp-for="BookRegion" class="form-control">
+                <!-- Populate with BookRegion data -->
+            </select>
+            <span asp-validation-for="BookRegion" class="text-danger"></span>
+        </div>
+
+        @* Verified (Checkbox) *@
+        <div class="form-group">
+            <label asp-for="Verified" class="control-label"></label>
+            <input asp-for="Verified" class="form-control" type="checkbox" />
+            <span asp-validation-for="Verified" class="text-danger"></span>
+        </div>
+
+        @* Access (Checkbox) *@
+        <div class="form-group">
+            <label asp-for="Access" class="control-label"></label>
+            <input asp-for="Access" class="form-control" type="checkbox" />
+            <span asp-validation-for="Access" class="text-danger"></span>
+        </div>
+
+        @* Paused (Checkbox) *@
+        <div class="form-group">
+            <label asp-for="Paused" class="control-label"></label>
+            <input asp-for="Paused" class="form-control" type="checkbox" />
+            <span asp-validation-for="Paused" class="text-danger"></span>
+        </div>
+
+        @* BetRefreshRequested (DateTime) *@
+        <div class="form-group">
+            <label asp-for="BetRefreshRequested" class="control-label"></label>
+            <input asp-for="BetRefreshRequested" class="form-control" type="datetime-local" />
+            <span asp-validation-for="BetRefreshRequested" class="text-danger"></span>
+        </div>
+
+        @* LatestRefreshRequestId (Editable field) *@
+        <div class="form-group">
+            <label asp-for="LatestRefreshRequestId" class="control-label"></label>
+            <input asp-for="LatestRefreshRequestId" class="form-control" />
+            <span asp-validation-for="LatestRefreshRequestId" class="text-danger"></span>
+        </div>
+
+        @* Balance (Decimal) *@
+        <div class="form-group">
+            <label asp-for="Balance" class="control-label"></label>
+            <input asp-for="Balance" class="form-control" type="number" step="0.01" />
+            <span asp-validation-for="Balance" class="text-danger"></span>
+        </div>
+
+        @* TimeCreated (DateTime) (ReadOnly) *@
+        <div class="form-group">
+            <label asp-for="TimeCreated" class="control-label"></label>
+            <input asp-for="TimeCreated" class="form-control" type="datetime-local" readonly />
+            <span asp-validation-for="TimeCreated" class="text-danger"></span>
+        </div>
+
+        @* MissingBets (Integer) *@
+        <div class="form-group">
+            <label asp-for="MissingBets" class="control-label"></label>
+            <input asp-for="MissingBets" class="form-control" type="number" />
+            <span asp-validation-for="MissingBets" class="text-danger"></span>
+        </div>
+
+        @* IsUnverifiable (Checkbox) *@
+        <div class="form-group">
+            <label asp-for="IsUnverifiable" class="control-label"></label>
+            <input asp-for="IsUnverifiable" class="form-control" type="checkbox" />
+            <span asp-validation-for="IsUnverifiable" class="text-danger"></span>
+        </div>
+
+        @* RefreshInProgress (Checkbox) *@
+        <div class="form-group">
+            <label asp-for="RefreshInProgress" class="control-label"></label>
+            <input asp-for="RefreshInProgress" class="form-control" type="checkbox" />
+            <span asp-validation-for="RefreshInProgress" class="text-danger"></span>
+        </div>
+
+        @* TFA (Checkbox) *@
+        <div class="form-group">
+            <label asp-for="TFA" class="control-label"></label>
+            <input asp-for="TFA" class="form-control" type="checkbox" />
+            <span asp-validation-for="TFA" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a href="~/BettorAccountInput/Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

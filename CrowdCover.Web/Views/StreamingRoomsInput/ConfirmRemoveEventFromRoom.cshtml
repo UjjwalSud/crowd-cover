@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model CrowdCover.Web.Models.ViewModels.RemoveEventViewModel
+
+@{
+    ViewData["Title"] = "Remove Event";
+}
+
+<h2>Remove Event from Streaming Room</h2>
+
+<p>Are you sure you want to remove the event "@Model.EventName" from this streaming room?</p>
+
+<form asp-action="RemoveEventFromRoom" method="post">
+    <input type="hidden" asp-for="StreamingRoomId" />
+    <input type="hidden" asp-for="EventId" />
+    <button type="submit" class="btn btn-danger">Remove</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

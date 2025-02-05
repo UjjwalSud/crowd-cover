@@ -1,0 +1,195 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.Bet
+
+@{
+    ViewData["Title"] = "Bet Details";
+}
+
+<h2>Bet Details</h2>
+
+<div>
+    <h4>Bet</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EventId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EventId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Segment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Segment)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proposition)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proposition)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SegmentDetail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SegmentDetail)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Line)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Line)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OddsAmerican)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OddsAmerican)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Outcome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Outcome)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Live)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Live)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Incomplete)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Incomplete)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BookDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BookDescription)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MarketSelection)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MarketSelection)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AutoGrade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AutoGrade)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SegmentId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SegmentId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PositionId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PositionId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SdioMarketId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SdioMarketId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SportradarMarketId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SportradarMarketId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OddsjamMarketId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OddsjamMarketId)
+        </dd>
+
+        @* PropDetails (if applicable) *@
+        @if (Model.PropDetails != null)
+        {
+            <dt class="col-sm-2">
+                PropDetails: Matchup Special
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PropDetails.MatchupSpecial)
+            </dd>
+
+            <dt class="col-sm-2">
+                PropDetails: Player
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PropDetails.Player)
+            </dd>
+
+            <dt class="col-sm-2">
+                PropDetails: Team
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PropDetails.Team)
+            </dd>
+        }
+    </dl>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a href="~/BetsInput/Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

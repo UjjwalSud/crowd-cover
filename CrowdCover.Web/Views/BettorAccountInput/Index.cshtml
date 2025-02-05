@@ -1,0 +1,112 @@
+﻿@model IEnumerable<CrowdCover.Web.Models.ViewModels.LinkedBettorAccountViewModel>
+
+@{
+    ViewData["Title"] = "Bettor Accounts";
+}
+
+<h1>Bettor Accounts</h1>
+
+<!-- Display success or error messages -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Bettor Account</a>
+    <form asp-action="RefreshAll" method="post" style="display:inline;">
+        <button type="submit" class="btn btn-success">Refresh All</button>
+    </form>
+</p>
+
+<table id="bettorAccountsTable" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.BettorAccount.Bettor)</th>
+            <th>@Html.DisplayNameFor(model => model.BettorAccount.Book.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.BettorAccount.BookRegion.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.BettorAccount.Balance)</th>
+            <th>@Html.DisplayNameFor(model => model.BettorAccount.Verified)</th>
+            <th>@Html.DisplayNameFor(model => model.BettorAccount.TimeCreated)</th>
+            <th>Linked User</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.BettorAccount.Bettor)</td>
+                <td>@Html.DisplayFor(modelItem => item.BettorAccount.Book.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.BettorAccount.BookRegion.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.BettorAccount.Balance)</td>
+                <td>@Html.DisplayFor(modelItem => item.BettorAccount.Verified)</td>
+                <td>@Html.DisplayFor(modelItem => item.BettorAccount.TimeCreated)</td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(item.LinkedUser))
+                    {
+                        @item.LinkedUser
+                  
+                    }
+                    else
+                    {
+                        <span class="text-muted">Not Linked</span>
+                    }
+                </td>
+                <td>
+                    <form asp-action="LinkBettor" method="post" style="display:inline;">
+                        <input type="hidden" name="bettorId" value="@item.BettorAccount.Bettor" />
+                        <div class="form-group">
+                            <select name="userId" class="form-control form-control-sm" required>
+                                <option value="">-- Select User --</option>
+                                @foreach (var user in (List<SelectListItem>)ViewData["UserList"])
+                                {
+                                    <option value="@user.Value">@user.Text</option>
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary mt-2">Link Bettor</button>
+                    </form>
+                    @if (!string.IsNullOrWhiteSpace(item.LinkedUser))
+                    {
+                        <form asp-action="UnlinkBettor" method="post" style="display:inline;">                          
+                            <input type="hidden" name="bettorId" value="@item.BettorAccount.Bettor" />
+                            <button type="submit" class="btn btn-sm btn-danger">Unlink</button>
+                        </form>
+                    }
+                  @*   <form asp-action="Refresh" method="post" style="display:inline;">
+                        <input type="hidden" name="bettorId" value="@item.BettorAccount.Bettor" />
+                        <button type="submit" class="btn btn-sm btn-success">Refresh</button>
+                    </form> *@
+                    <a asp-action="Edit" asp-route-id="@item.BettorAccount.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.BettorAccount.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.BettorAccount.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <!-- DataTables initialization -->
+    <script>
+        $(document).ready(function () {
+            $('#bettorAccountsTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true
+            });
+        });
+    </script>
+}

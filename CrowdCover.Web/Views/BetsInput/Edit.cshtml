@@ -1,0 +1,184 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.Bet
+
+@{
+    ViewData["Title"] = "Edit Bet";
+}
+
+<h2>Edit Bet</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Bet</h4>
+        <hr />
+
+        @* Id (Read-only) *@
+        <div class="form-group">
+            <label asp-for="Id" class="control-label"></label>
+            <input asp-for="Id" class="form-control" readonly />
+        </div>
+
+        @* Type *@
+        <div class="form-group">
+            <label asp-for="Type" class="control-label"></label>
+            <input asp-for="Type" class="form-control" />
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+
+        @* EventId *@
+        <div class="form-group">
+            <label asp-for="EventId" class="control-label"></label>
+            <input asp-for="EventId" class="form-control" />
+            <span asp-validation-for="EventId" class="text-danger"></span>
+        </div>
+
+        @* Segment *@
+        <div class="form-group">
+            <label asp-for="Segment" class="control-label"></label>
+            <input asp-for="Segment" class="form-control" />
+            <span asp-validation-for="Segment" class="text-danger"></span>
+        </div>
+
+        @* Proposition *@
+        <div class="form-group">
+            <label asp-for="Proposition" class="control-label"></label>
+            <input asp-for="Proposition" class="form-control" />
+            <span asp-validation-for="Proposition" class="text-danger"></span>
+        </div>
+
+        @* Segment Detail *@
+        <div class="form-group">
+            <label asp-for="SegmentDetail" class="control-label"></label>
+            <input asp-for="SegmentDetail" class="form-control" />
+            <span asp-validation-for="SegmentDetail" class="text-danger"></span>
+        </div>
+
+        @* Position *@
+        <div class="form-group">
+            <label asp-for="Position" class="control-label"></label>
+            <input asp-for="Position" class="form-control" />
+            <span asp-validation-for="Position" class="text-danger"></span>
+        </div>
+
+        @* Line *@
+        <div class="form-group">
+            <label asp-for="Line" class="control-label"></label>
+            <input asp-for="Line" class="form-control" />
+            <span asp-validation-for="Line" class="text-danger"></span>
+        </div>
+
+        @* Odds American *@
+        <div class="form-group">
+            <label asp-for="OddsAmerican" class="control-label"></label>
+            <input asp-for="OddsAmerican" class="form-control" />
+            <span asp-validation-for="OddsAmerican" class="text-danger"></span>
+        </div>
+
+        @* Status *@
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <input asp-for="Status" class="form-control" />
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+        @* Outcome *@
+        <div class="form-group">
+            <label asp-for="Outcome" class="control-label"></label>
+            <input asp-for="Outcome" class="form-control" />
+            <span asp-validation-for="Outcome" class="text-danger"></span>
+        </div>
+
+        @* Live *@
+        <div class="form-group">
+            <label asp-for="Live" class="control-label"></label>
+            <input asp-for="Live" class="form-control" />
+            <span asp-validation-for="Live" class="text-danger"></span>
+        </div>
+
+        @* Incomplete *@
+        <div class="form-group">
+            <label asp-for="Incomplete" class="control-label"></label>
+            <input asp-for="Incomplete" class="form-control" />
+            <span asp-validation-for="Incomplete" class="text-danger"></span>
+        </div>
+
+        @* Book Description *@
+        <div class="form-group">
+            <label asp-for="BookDescription" class="control-label"></label>
+            <input asp-for="BookDescription" class="form-control" />
+            <span asp-validation-for="BookDescription" class="text-danger"></span>
+        </div>
+
+        @* Market Selection *@
+        <div class="form-group">
+            <label asp-for="MarketSelection" class="control-label"></label>
+            <input asp-for="MarketSelection" class="form-control" />
+            <span asp-validation-for="MarketSelection" class="text-danger"></span>
+        </div>
+
+        @* Auto Grade *@
+        <div class="form-group">
+            <label asp-for="AutoGrade" class="control-label"></label>
+            <input asp-for="AutoGrade" class="form-control" />
+            <span asp-validation-for="AutoGrade" class="text-danger"></span>
+        </div>
+
+        @* Segment Id *@
+        <div class="form-group">
+            <label asp-for="SegmentId" class="control-label"></label>
+            <input asp-for="SegmentId" class="form-control" />
+            <span asp-validation-for="SegmentId" class="text-danger"></span>
+        </div>
+
+        @* Position Id *@
+        <div class="form-group">
+            <label asp-for="PositionId" class="control-label"></label>
+            <input asp-for="PositionId" class="form-control" />
+            <span asp-validation-for="PositionId" class="text-danger"></span>
+        </div>
+
+        @* Sdio Market Id *@
+        <div class="form-group">
+            <label asp-for="SdioMarketId" class="control-label"></label>
+            <input asp-for="SdioMarketId" class="form-control" />
+            <span asp-validation-for="SdioMarketId" class="text-danger"></span>
+        </div>
+
+        @* Sportradar Market Id *@
+        <div class="form-group">
+            <label asp-for="SportradarMarketId" class="control-label"></label>
+            <input asp-for="SportradarMarketId" class="form-control" />
+            <span asp-validation-for="SportradarMarketId" class="text-danger"></span>
+        </div>
+
+        @* Oddsjam Market Id *@
+        <div class="form-group">
+            <label asp-for="OddsjamMarketId" class="control-label"></label>
+            <input asp-for="OddsjamMarketId" class="form-control" />
+            <span asp-validation-for="OddsjamMarketId" class="text-danger"></span>
+        </div>
+
+        @* PropDetails (Optional) *@
+        @if (Model.PropDetails != null)
+        {
+            <div class="form-group">
+                <label>PropDetails</label>
+                <input asp-for="PropDetails.MatchupSpecial" class="form-control" placeholder="Matchup Special" />
+                <input asp-for="PropDetails.Player" class="form-control" placeholder="Player" />
+                <input asp-for="PropDetails.Team" class="form-control" placeholder="Team" />
+                <span asp-validation-for="PropDetails" class="text-danger"></span>
+            </div>
+        }
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <a href="~/BetsInput/Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

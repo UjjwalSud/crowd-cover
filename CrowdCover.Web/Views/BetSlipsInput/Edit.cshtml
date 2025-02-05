@@ -1,0 +1,151 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.BetSlip
+
+@{
+    ViewData["Title"] = "Edit BetSlip";
+}
+
+<h2>Edit BetSlip</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>BetSlip</h4>
+        <hr />
+
+        @* Id (Read-only) *@
+        <div class="form-group">
+            <label asp-for="Id" class="control-label"></label>
+            <input asp-for="Id" class="form-control" readonly />
+        </div>
+
+        @* Bettor *@
+        <div class="form-group">
+            <label asp-for="Bettor" class="control-label"></label>
+            <input asp-for="Bettor" class="form-control" />
+            <span asp-validation-for="Bettor" class="text-danger"></span>
+        </div>
+
+        @* BettorAccount *@
+        <div class="form-group">
+            <label asp-for="BettorAccount" class="control-label"></label>
+            <input asp-for="BettorAccount" class="form-control" />
+            <span asp-validation-for="BettorAccount" class="text-danger"></span>
+        </div>
+
+        @* Book Reference *@
+        <div class="form-group">
+            <label asp-for="BookRef" class="control-label"></label>
+            <input asp-for="BookRef" class="form-control" />
+            <span asp-validation-for="BookRef" class="text-danger"></span>
+        </div>
+
+        @* Time Placed *@
+        <div class="form-group">
+            <label asp-for="TimePlaced" class="control-label"></label>
+            <input asp-for="TimePlaced" class="form-control" />
+            <span asp-validation-for="TimePlaced" class="text-danger"></span>
+        </div>
+
+        @* Type *@
+        <div class="form-group">
+            <label asp-for="Type" class="control-label"></label>
+            <input asp-for="Type" class="form-control" />
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+
+        @* Subtype *@
+        <div class="form-group">
+            <label asp-for="Subtype" class="control-label"></label>
+            <input asp-for="Subtype" class="form-control" />
+            <span asp-validation-for="Subtype" class="text-danger"></span>
+        </div>
+
+        @* OddsAmerican *@
+        <div class="form-group">
+            <label asp-for="OddsAmerican" class="control-label"></label>
+            <input asp-for="OddsAmerican" class="form-control" />
+            <span asp-validation-for="OddsAmerican" class="text-danger"></span>
+        </div>
+
+        @* AtRisk *@
+        <div class="form-group">
+            <label asp-for="AtRisk" class="control-label"></label>
+            <input asp-for="AtRisk" class="form-control" />
+            <span asp-validation-for="AtRisk" class="text-danger"></span>
+        </div>
+
+        @* ToWin *@
+        <div class="form-group">
+            <label asp-for="ToWin" class="control-label"></label>
+            <input asp-for="ToWin" class="form-control" />
+            <span asp-validation-for="ToWin" class="text-danger"></span>
+        </div>
+
+        @* Status *@
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <input asp-for="Status" class="form-control" />
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+        @* Outcome *@
+        <div class="form-group">
+            <label asp-for="Outcome" class="control-label"></label>
+            <input asp-for="Outcome" class="form-control" />
+            <span asp-validation-for="Outcome" class="text-danger"></span>
+        </div>
+
+        @* Refresh Response *@
+        <div class="form-group">
+            <label asp-for="RefreshResponse" class="control-label"></label>
+            <input asp-for="RefreshResponse" class="form-control" />
+            <span asp-validation-for="RefreshResponse" class="text-danger"></span>
+        </div>
+
+        @* Incomplete *@
+        <div class="form-group">
+            <label asp-for="Incomplete" class="control-label"></label>
+            <input asp-for="Incomplete" class="form-control" />
+            <span asp-validation-for="Incomplete" class="text-danger"></span>
+        </div>
+
+        @* Net Profit *@
+        <div class="form-group">
+            <label asp-for="NetProfit" class="control-label"></label>
+            <input asp-for="NetProfit" class="form-control" />
+            <span asp-validation-for="NetProfit" class="text-danger"></span>
+        </div>
+
+        @* Date Closed *@
+        <div class="form-group">
+            <label asp-for="DateClosed" class="control-label"></label>
+            <input asp-for="DateClosed" class="form-control" />
+            <span asp-validation-for="DateClosed" class="text-danger"></span>
+        </div>
+
+        @* Time Closed *@
+        <div class="form-group">
+            <label asp-for="TimeClosed" class="control-label"></label>
+            <input asp-for="TimeClosed" class="form-control" />
+            <span asp-validation-for="TimeClosed" class="text-danger"></span>
+        </div>
+
+        @* Type Special *@
+        <div class="form-group">
+            <label asp-for="TypeSpecial" class="control-label"></label>
+            <input asp-for="TypeSpecial" class="form-control" />
+            <span asp-validation-for="TypeSpecial" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <a href="~/BetSlipsInput/Index"  class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

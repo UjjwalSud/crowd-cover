@@ -1,0 +1,137 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.Event
+
+@{
+    ViewData["Title"] = "Edit Event";
+}
+
+<h2>Edit Event</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Event</h4>
+        <hr />
+
+        @* Id (Read-only) *@
+        <div class="form-group">
+            <label asp-for="Id" class="control-label"></label>
+            <input asp-for="Id" class="form-control" readonly />
+        </div>
+
+        @* SportsdataioId *@
+        <div class="form-group">
+            <label asp-for="SportsdataioId" class="control-label"></label>
+            <input asp-for="SportsdataioId" class="form-control" />
+            <span asp-validation-for="SportsdataioId" class="text-danger"></span>
+        </div>
+
+        @* SportradarId *@
+        <div class="form-group">
+            <label asp-for="SportradarId" class="control-label"></label>
+            <input asp-for="SportradarId" class="form-control" />
+            <span asp-validation-for="SportradarId" class="text-danger"></span>
+        </div>
+
+        @* OddsjamId *@
+        <div class="form-group">
+            <label asp-for="OddsjamId" class="control-label"></label>
+            <input asp-for="OddsjamId" class="form-control" />
+            <span asp-validation-for="OddsjamId" class="text-danger"></span>
+        </div>
+
+        @* TheOddsApiId *@
+        <div class="form-group">
+            <label asp-for="TheOddsApiId" class="control-label"></label>
+            <input asp-for="TheOddsApiId" class="form-control" />
+            <span asp-validation-for="TheOddsApiId" class="text-danger"></span>
+        </div>
+
+        @* Sport *@
+        <div class="form-group">
+            <label asp-for="Sport" class="control-label"></label>
+            <input asp-for="Sport" class="form-control" />
+            <span asp-validation-for="Sport" class="text-danger"></span>
+        </div>
+
+        @* League *@
+        <div class="form-group">
+            <label asp-for="League" class="control-label"></label>
+            <input asp-for="League" class="form-control" />
+            <span asp-validation-for="League" class="text-danger"></span>
+        </div>
+
+        @* Name *@
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        @* NameSpecial *@
+        <div class="form-group">
+            <label asp-for="NameSpecial" class="control-label"></label>
+            <input asp-for="NameSpecial" class="form-control" />
+            <span asp-validation-for="NameSpecial" class="text-danger"></span>
+        </div>
+
+        @* StartTime *@
+        <div class="form-group">
+            <label asp-for="StartTime" class="control-label"></label>
+            <input asp-for="StartTime" class="form-control" />
+            <span asp-validation-for="StartTime" class="text-danger"></span>
+        </div>
+
+        @* StartDate *@
+        <div class="form-group">
+            <label asp-for="StartDate" class="control-label"></label>
+            <input asp-for="StartDate" class="form-control" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
+
+        @* SportId *@
+        <div class="form-group">
+            <label asp-for="SportId" class="control-label"></label>
+            <input asp-for="SportId" class="form-control" />
+            <span asp-validation-for="SportId" class="text-danger"></span>
+        </div>
+
+        @* LeagueId *@
+        <div class="form-group">
+            <label asp-for="LeagueId" class="control-label"></label>
+            <input asp-for="LeagueId" class="form-control" />
+            <span asp-validation-for="LeagueId" class="text-danger"></span>
+        </div>
+
+        @* ContestantAway *@
+        <div class="form-group">
+            <label asp-for="ContestantAway.FullName" class="control-label">Contestant Away</label>
+            <input asp-for="ContestantAway.FullName" class="form-control" />
+            <span asp-validation-for="ContestantAway.FullName" class="text-danger"></span>
+        </div>
+
+        @* ContestantHome *@
+        <div class="form-group">
+            <label asp-for="ContestantHome.FullName" class="control-label">Contestant Home</label>
+            <input asp-for="ContestantHome.FullName" class="form-control" />
+            <span asp-validation-for="ContestantHome.FullName" class="text-danger"></span>
+        </div>
+
+        @* NeutralVenue *@
+        <div class="form-group">
+            <label asp-for="NeutralVenue" class="control-label"></label>
+            <input asp-for="NeutralVenue" class="form-control" />
+            <span asp-validation-for="NeutralVenue" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <a href="~/EventsInput/Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

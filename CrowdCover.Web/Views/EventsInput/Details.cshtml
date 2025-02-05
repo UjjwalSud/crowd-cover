@@ -1,0 +1,135 @@
+﻿@model CrowdCover.Web.Models.Sharpsports.Event
+
+@{
+    ViewData["Title"] = "Event Details";
+}
+
+<h2>Event Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SportsdataioId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SportsdataioId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SportradarId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SportradarId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OddsjamId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OddsjamId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TheOddsApiId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TheOddsApiId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sport)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sport)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.League)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.League)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NameSpecial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NameSpecial)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SportId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SportId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LeagueId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LeagueId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContestantAway.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContestantAway.FullName)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContestantHome.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContestantHome.FullName)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NeutralVenue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NeutralVenue)
+        </dd>
+    </dl>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a href="~/EventsInput/Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

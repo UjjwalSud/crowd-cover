@@ -1,0 +1,79 @@
+﻿@model IEnumerable<CrowdCover.Web.Models.Sharpsports.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h2>Books</h2>
+
+<div class="mb-3">
+    <!-- Button to trigger the RefreshBooks action -->
+    <a asp-action="RefreshBooks" class="btn btn-primary">Refresh Books</a>
+    <a asp-action="Create" class="btn btn-success">Add New Book</a>
+</div>
+
+<table id="booksTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Abbr</th>
+            <th>Status</th>
+            <th>Refresh Cadence Active</th>
+            <th>SDK Required</th>
+            <th>Pull Back To Date</th>
+            <th>Max History Months</th>
+            <th>Max History Bets</th>
+            <th>Mobile Only</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Id</td>
+                    <td>@book.Name</td>
+                    <td>@book.Abbr</td>
+                    <td>@book.Status</td>
+                    <td>@book.RefreshCadenceActive</td>
+                    <td>@book.SdkRequired</td>
+                    <td>@book.PullBackToDate?.ToString("yyyy-MM-dd")</td>
+                    <td>@book.MaxHistoryMonths</td>
+                    <td>@book.MaxHistoryBets</td>
+                    <td>@book.MobileOnly</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-info btn-sm">Details</a>
+                        <form asp-action="Delete" asp-route-id="@book.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="11" class="text-center">No books available.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts {
+    <!-- DataTables initialization -->
+    <script>
+        $(document).ready(function () {
+            $('#booksTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true
+            });
+        });
+    </script>
+}
